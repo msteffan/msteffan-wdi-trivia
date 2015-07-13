@@ -5,7 +5,7 @@
 // Global Variables:
 var num = 0;
 var timer = {
-    seconds: 301,
+    seconds: 180,
     newTime: 0,
     increment: function incrementTime() {
         if(timer.seconds>0){
@@ -33,7 +33,7 @@ var qCounter = {
     }
 };
 var answers = {
-    Seattle: ["Pike Place","Columbia Tower","Greenlake", "Mount Rainier"],
+    Seattle: ["Pike Place","Columbia Tower","Greenlake", "Mount Rainier", "true", "true", "Fremont Troll", "UW", "false", "Hempfest", "Starbuck","Seahawks", "false", "12th Man", "Microsoft", "Boeing"],
     DC: [],
 }
 
@@ -52,15 +52,6 @@ $(window).load(function(){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // game play functions
 
-function showQuestion(){
-    if(num+1 >= $("h4.question").length){
-        alert("that's all");
-    }
-    $("h4.question").eq(num).css("display", "none");
-    num++;
-    $("h4.question").eq(num).css("display", "block");
-
-}
 function checkAnswer(){
     event.preventDefault();
     currentGuess = $("#playerInput").val()
@@ -77,14 +68,25 @@ function checkAnswer(){
 }
 
 function displayAnswers(){
-    //display user guesses
-
-    //display correctAnswers
     $(".showAnswers").append("<tr class='answersRow'></tr>");
     $(".answersRow").last().append("<td>"+currentGuess+"</td>")
     $(".answersRow").last().append("<td>"+answers.Seattle[num]+"</td>")
 }
 
+function showQuestion(){
+    if(num+1 >= $("h4.question").length){
+        lastQuestion();
+    }
+    $("h4.question").eq(num).css("display", "none");
+    num++;
+    $("h4.question").eq(num).css("display", "block");
+
+}
+
+function lastQuestion() {
+    $("h4.question").last().after("<h4 class='lastQuestion' style='display:block'></h4>");
+    $(".lastQuestion").html("You answered "+ qCounter.numCorrect + " out of 15 questions correctly!");
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // click events
