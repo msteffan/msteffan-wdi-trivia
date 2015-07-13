@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <title>Trivia Project</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body id="gamePlay">
+    <header id="gameBar">
+        <div id="questionsCorrect" class="gameStats">
+            <h3>Correct Answers</h3>
+            <p class="correctAnswers"></p>
+        </div>
+        <div id="remainingTime" class="gameStats">
+            <h3>Time Remaining</h3>
+            <div id="timer"></div>
+        </div>
+    </header>
+    <main>
+        <div id="currentQuestion">
+            <h4 class="question">What is the name of the large outdoor market in Seattle?</h4>
+            <h4 class="question">What is the name of the tallest building in Seattle?</h4>
+            <h4 class="question">What is the name of the large man made lake in Seattle?</h4>
+            <h4 class="question">What mountain is located just south of Seattle?</h4>
+        </div>
+        <div class="inputBox">
+            <input id="playerInput" type="text" placeholder="What's your answer?">
+        </div>
+    </main>
+    <footer>
+        <div id="questionsLeft">
+            <h3 class="footerP">Questions to go:</h3>
+            <div class="numQuestionsLeft">15</div>
+        </div>
+    </footer>
+    <table class="showAnswers">
+        <tr class="row1">
+            <td>Correct Answer</td>
+            <td>User Answer</td>
+        </tr>
+
+    </table>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
