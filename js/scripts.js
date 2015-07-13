@@ -1,42 +1,16 @@
 // main page click to play commands
-// $("#Seattle").on("click", playGame);
-// $("#DC").on("click", playGame);
+var source;
+$("#Seattle").on("click", function(){
+    window.location.href = "gamePlay.html";
+    source = $("#Seattle");
+});
+$("#DC").on("click", function(){
+    window.location.href = "gamePlay.html";
+    source = $("#DC");
+});
 
-// Global Variables:
-// var num = 0;
-// var timer = {
-//     seconds: 60,
-//     newTime: 0,
-//     increment: function incrementTime() {
-//         var interval = setInterval(function(){
-//             if(timer.seconds > 0){
-//                 timer.seconds--;
-//                 $("#timer").html(timer.seconds);
-//             } else {
-//                 alert("time's up")
-//                 clearInterval(interval)
-//             }
-//         }, 1000);
-//     }
-// };
-// var qCounter = {
-//     numCorrect: 0,
-//     totalQ: 15,
-//     numAsked: 0,
-//     addCorrect: function incrementQs(){
-//         qCounter.numCorrect++
-//         $("p.correctAnswers").html(this.numCorrect);
-//     },
-//     getTotal: function checkRemaining() {
-//         qCounter.numAsked++;
-//         var numRemaining = qCounter.totalQ - qCounter.numAsked;
-//         $(".numQuestionsLeft").html(numRemaining)
-//     }
-// };
-// var answers = {
-//     Seattle: ["Pike Place","Columbia Tower","Greenlake", "Mount Rainier", "true", "true", "Fremont Troll", "UW", "false", "Hempfest", "Starbuck","Seahawks", "false", "12th Man", "Microsoft", "Boeing"],
-//     DC: ["Metro", "Union Station", "false", "states", "false", "false", "36", "Washington Monument", "true", "Wizards", "Muriel Bowser", "Russell", "true", "Air and Space", "true"]
-// }
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // on page load:
@@ -52,7 +26,7 @@ $(window).load(function(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // game play functions
-
+var currentGuess;
 var trivia = {
     num: 0,
     timer: {
@@ -137,3 +111,48 @@ $("#playerInput").on("keypress", function(e){
         trivia.playGame.checkAnswer();
     }
 });
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// old
+
+
+
+// Global Variables:
+// var num = 0;
+// var timer = {
+//     seconds: 60,
+//     newTime: 0,
+//     increment: function incrementTime() {
+//         var interval = setInterval(function(){
+//             if(timer.seconds > 0){
+//                 timer.seconds--;
+//                 $("#timer").html(timer.seconds);
+//             } else {
+//                 alert("time's up")
+//                 clearInterval(interval)
+//             }
+//         }, 1000);
+//     }
+// };
+// var qCounter = {
+//     numCorrect: 0,
+//     totalQ: 15,
+//     numAsked: 0,
+//     addCorrect: function incrementQs(){
+//         qCounter.numCorrect++
+//         $("p.correctAnswers").html(this.numCorrect);
+//     },
+//     getTotal: function checkRemaining() {
+//         qCounter.numAsked++;
+//         var numRemaining = qCounter.totalQ - qCounter.numAsked;
+//         $(".numQuestionsLeft").html(numRemaining)
+//     }
+// };
+// var answers = {
+//     Seattle: ["Pike Place","Columbia Tower","Greenlake", "Mount Rainier", "true", "true", "Fremont Troll", "UW", "false", "Hempfest", "Starbuck","Seahawks", "false", "12th Man", "Microsoft", "Boeing"],
+//     DC: ["Metro", "Union Station", "false", "states", "false", "false", "36", "Washington Monument", "true", "Wizards", "Muriel Bowser", "Russell", "true", "Air and Space", "true"]
+// }
