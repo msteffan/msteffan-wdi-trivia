@@ -1,27 +1,64 @@
 <!doctype html>
 <html>
 <head>
-    <title>Trivia Project</title>
-
+    <title>Washington Trivia</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-    <div class="cities">
-        <div class="whichCity">
-            <h1 class="pickACity"> &#x2190; Which Washington do you know best? &#8594;</h1>
-            <p class="pickACity">Click to test your knowledge!</p>
-        </div>
-        <!-- <a href="gamePlay.html"> -->
-            <div id="Seattle" class="mainHeroImage"></div>
-            <!-- </a> -->
-        <!-- <a href="#"> -->
-            <div id="DC" class="mainHeroImage"></div>
-            <!-- </a> -->
+<!-- FIX ME LATER -->
+<div class="cities">
+    <div class="whichCity">
+        <a id="top"><h1 class="pickACity">Which Washington do you know best?</h1></a>
+        <!-- <p class="pickACity">Click to test your knowledge!</p> -->
     </div>
-
-
-
+        <a href="#playMe">
+            <div id="Seattle" class="mainHeroImage"></div>
+        </a>
+        <a href="#playMe">
+            <div id="DC" class="mainHeroImage"></div>
+        </a>
+</div>
+<div id="gamePlay">
+    <header id="gameBar">
+        <a id="playMe"></a>
+        <div id="questionsCorrect" class="gameStats">
+            <h3>Correct Answers</h3>
+            <p class="correctAnswers"></p>
+        </div>
+        <div id="remainingTime" class="gameStats">
+            <h3>Time Remaining</h3>
+            <div id="timer"></div>
+        </div>
+    </header>
+    <main>
+        <div id="resetGame">
+            <a href="#top"><p class="newGameText">Play new game</p></a>
+        </div>
+        <div id="currentQuestion">
+            <h4 class="question">Here we go!</h4>
+        </div>
+        <div class="inputBox">
+            <input id="playerInput" type="text" placeholder="What's your answer?">
+        </div>
+    </main>
+    <footer>
+        <div id="questionsLeft">
+            <h3 class="footerP">Questions to go:</h3>
+            <div class="numQuestionsLeft">16</div>
+        </div>
+    </footer>
+    <div class="answersBox">
+        <table class="showAnswers">
+            <tr class="row1">
+                <td>User Answer</td>
+                <td>Correct Answer</td>
+            </tr>
+        </table>
+    </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/smoothScroll.js"></script>
 <script src="js/scripts.js"></script>
 </body>
 </html>

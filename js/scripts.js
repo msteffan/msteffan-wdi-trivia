@@ -6,9 +6,15 @@
     // play one game
     // save the score
     // play a second  game
+
     // compare the second score to the first
     // determine whose score was higher
     // display who won
+    $(document).ready(function() {
+
+          $('a').smoothScroll();
+          $(this).scrollTop(0);
+            });
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,9 +62,9 @@ var currentGuess;
 var interval;
 var trivia = {
     num: 0,
-    // game timer
+// controls the game timer
     timer: {
-        seconds: 60,
+        seconds: 90,
         newTime: 0,
         increment: function incrementTime() {
             interval = setInterval(function(){
@@ -67,13 +73,6 @@ var trivia = {
                     $("#timer").html(trivia.timer.seconds);
                 } else {
                     trivia.timer.stopTimer();
-                    // var prompt = confirm("You ran out of time! Play again?")
-                    // if(prompt){
-                    //     clearInterval(interval)
-                    //     trivia.playGame.resetGame()
-                    // } else {
-                    //     clearInterval(interval)
-                    // }
                 }
             }, 1000);
         },
@@ -91,16 +90,18 @@ var trivia = {
             }
         }
     },
-    // tracks how many questions are remaining in the game
+// tracks how many questions are remaining in the game
     qCounter: {
         numCorrect: 0,
         totalQ: 16,
         numAsked: 0,
+        // adds +1 to the correct answers box for every correct question
         addCorrect: function incrementQs(){
             trivia.qCounter.numCorrect++;
             var correctAnswers = trivia.qCounter.numCorrect - 1;
             $("p.correctAnswers").html(correctAnswers);
         },
+        // subtracts -1 from the remaining questions for every question answered
         getTotal: function checkRemaining() {
             trivia.qCounter.numAsked++;
             var numRemaining = trivia.qCounter.totalQ - trivia.qCounter.numAsked;
@@ -110,9 +111,8 @@ var trivia = {
             }
         }
     },
-    // questions for the game, Seattle & DC categories
+// questions for the game--Seattle & DC categories
     questions: {
-        // yes, you must have the exact right answer to get the point. The world needs more people who use correct capitalization.
         Seattle: [
             "Ready to play? Type 'y' to begin.",
             "What is the name of the large outdoor market in Seattle?",
@@ -152,6 +152,7 @@ var trivia = {
         ]
     },
     // answers for the questions
+    // yes, you must have the exact right answer to get the point. The world needs more people who use correct capitalization.
     answers: {
         Seattle:
             ["y", "Pike Place","Columbia Tower","Greenlake", "Mount Rainier", "true", "true", "Fremont Troll", "UW", "false", "Hempfest", "Starbucks","Seahawks", "false", "12th Man", "Microsoft", "Boeing"],
@@ -188,22 +189,32 @@ var trivia = {
         },
         // display the next question
         showQuestion: function showQuestion(sourceQ) {
-            // if the last question was answered, tell the player how many he/she got correct
+            // if the final question was answered, tell the player how many he/she got correct
             var answers = trivia.qCounter.numCorrect - 1;
             if(trivia.num+1 > $(sourceQ).length){
                 $("h4.question").html("You answered "+ answers + " out of 15 questions correctly!");
-                console.log("no more")
+                // stop the timer after the final question is answered
                 trivia.timer.stopTimer();
             }
+            // otherwise, display the next question
             $("h4.question").html(sourceQ[trivia.num])
         },
         // resets the game page on click
         resetGame: function resetGame() {
-            // Remove the # from the hash, as different browsers may or may not include it
-            var hash = location.hash.replace('#','');
-            if(hash != ''){
-                location.hash = '';
+            ///Remove the anchor link from the URL
+            // var hash = location.hash.replace('#','');
+            // if(hash != ''){
+            //     location.hash = '';
+            // }
+            //reload the page
+            function goUp(){
+                $('a').smoothScroll();
             }
+            // trivia.timer.stopTimer();
+            // $(".showAnswers").empty();
+            // trivia.num = 0;
+            // trivia.qCounter.numCorrect = 0;
+
             location.reload();
 
 
