@@ -53,27 +53,42 @@ function startGame(){
 
 
 var currentGuess;
+var interval;
 var trivia = {
     num: 0,
     // game timer
     timer: {
-        seconds: 90,
+        seconds: 60,
         newTime: 0,
         increment: function incrementTime() {
-            var interval = setInterval(function(){
+            interval = setInterval(function(){
                 if(trivia.timer.seconds > 0){
                     trivia.timer.seconds--;
                     $("#timer").html(trivia.timer.seconds);
                 } else {
-                    var prompt = confirm("You ran out of time! Play again?")
-                    if(prompt){
-                        clearInterval(interval)
-                        trivia.playGame.resetGame()
-                    } else {
-                        clearInterval(interval)
-                    }
+                    trivia.timer.stopTimer();
+                    // var prompt = confirm("You ran out of time! Play again?")
+                    // if(prompt){
+                    //     clearInterval(interval)
+                    //     trivia.playGame.resetGame()
+                    // } else {
+                    //     clearInterval(interval)
+                    // }
                 }
             }, 1000);
+        },
+        stopTimer: function stopTimer(){
+            if(trivia.timer.seconds < 0){
+                var prompt = confirm("You ran out of time! Play again?")
+                if(prompt){
+                    clearInterval(interval)
+                    trivia.playGame.resetGame()
+                } else {
+                    clearInterval(interval)
+                }
+            } else {
+                clearInterval(interval)
+            }
         }
     },
     // tracks how many questions are remaining in the game
@@ -97,6 +112,7 @@ var trivia = {
     },
     // questions for the game, Seattle & DC categories
     questions: {
+        // yes, you must have the exact right answer to get the point. The world needs more people who use correct capitalization.
         Seattle: [
             "Ready to play? Type 'y' to begin.",
             "What is the name of the large outdoor market in Seattle?",
@@ -174,8 +190,10 @@ var trivia = {
         showQuestion: function showQuestion(sourceQ) {
             // if the last question was answered, tell the player how many he/she got correct
             var answers = trivia.qCounter.numCorrect - 1;
-            if(trivia.num+2 >= $("h4.question").length){
+            if(trivia.num+1 > $(sourceQ).length){
                 $("h4.question").html("You answered "+ answers + " out of 15 questions correctly!");
+                console.log("no more")
+                trivia.timer.stopTimer();
             }
             $("h4.question").html(sourceQ[trivia.num])
         },
