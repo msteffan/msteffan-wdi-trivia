@@ -13,8 +13,14 @@ $("#DC").on("click", function(){
     sourceA = trivia.answers.DC;
     startGame();
 });
+$("#resetGame").on("click", function(){
+    trivia.playGame.resetGame();
+    });
 
 function startGame(){
+    // $("#gamePlay").css({
+    //     "background": "url(images/SeattleSkyline.jpg) no-repeat center fixed",
+    //     "background-size": "cover"})
     trivia.timer.increment();
     trivia.playGame.showQuestion(sourceQ)
 //When a player answers a question
@@ -24,6 +30,7 @@ function startGame(){
         }
     });
 }
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // game play functions
@@ -142,10 +149,22 @@ var trivia = {
         // display the next question
         showQuestion: function showQuestion(sourceQ) {
             // if the last question was answered, tell the player how many he/she got correct
+            var answers = trivia.qCounter.numCorrect - 1;
             if(trivia.num+2 >= $("h4.question").length){
-                $("h4.question").html("You answered "+ trivia.qCounter.numCorrect + " out of 15 questions correctly!");
+                $("h4.question").html("You answered "+ answers + " out of 15 questions correctly!");
             }
             $("h4.question").html(sourceQ[trivia.num])
+        },
+        // resets the game page on click
+        resetGame: function resetGame() {
+            // Remove the # from the hash, as different browsers may or may not include it
+            var hash = location.hash.replace('#','');
+            if(hash != ''){
+                location.hash = '';
+            }
+            location.reload();
+
+
         }
     }
 }

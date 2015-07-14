@@ -5,7 +5,7 @@ This repository contains the code for WDI Project #1, which will be a self-scori
 
 User stories
 
-- As a user, I want to be able to select a category to play from a list, so that I can have a shot at answering correctly. (//have freedom of choice?)
+<!-- - As a user, I want to be able to select a category to play from a list, so that I can have a shot at answering correctly. (//have freedom of choice?) -->
 <!-- - As a user, I want to see the question on my screen so that I can read it. -->
 <!-- - As a user, I want to be able to type my answer to each question and press submit. -->
 <!-- - As a user, I want to know how many questions I have answered correctly so far, so that I can gauge how well I'm doing. -->
