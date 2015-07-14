@@ -132,7 +132,7 @@ main {
     font-family: Helvetica;
     vertical-align: middle;
     color: white;
-    display: none;
+    /*display: none;*/
 }
 
 .inputBox {
