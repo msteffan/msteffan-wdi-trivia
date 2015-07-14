@@ -1,31 +1,54 @@
-// main page click to play commands
-var source;
-$("#Seattle").on("click", function(){
-    window.location.href = "gamePlay.html";
-    source = $("#Seattle");
-});
-$("#DC").on("click", function(){
-    window.location.href = "gamePlay.html";
-    source = $("#DC");
-});
 
-
-
+// $('a').on('click', function() {
+//     $.smoothScroll({
+//       scrollElement: $('div.scrollme'),
+//       scrollTarget: '#findme',
+//       direction: top,
+//       speed: 1000
+//
+//     });
+//     return false;
+//   });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// on page load:
+// click events
 
-$(window).load(function(){
-    // start the timer
+var source;
+$("#Seattle").on("click", function(){
+//    location.href = "#gamePlay";
+    source = "Seattle";
+    startGame();
+});
+$("#DC").on("click", function(){
+//    location.href = "#gamePlay";
+    source = "DC";
+    startGame();
+});
+
+function startGame(){
     trivia.timer.increment();
-    // display questions correct out of total questions
+    if(source=="Seattle"){
+        console.log("play Seattle")
+    } else {
+        console.log("play DC")
+    }
     $("p.correctAnswers").html(trivia.qCounter.numCorrect)
-    // display first question
     $("h4.question").eq(trivia.num).css("display", "block")
+}
+
+
+//When a player answers a question
+$("#playerInput").on("keypress", function(e){
+//  event.preventDefault();
+    if(e.which === 13){
+        trivia.playGame.checkAnswer();
+    }
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // game play functions
+
+
 var currentGuess;
 var trivia = {
     num: 0,
@@ -61,6 +84,10 @@ var trivia = {
             }
         }
     },
+    questions: {
+        Seattle: [],
+        DC: []
+    }
     answers: {
         Seattle: ["Pike Place","Columbia Tower","Greenlake", "Mount Rainier", "true", "true", "Fremont Troll", "UW", "false", "Hempfest", "Starbuck","Seahawks", "false", , "Microsoft", "Boeing"],
         DC: ["Metro", "Union Station", "false", "states", "false", "false", "36", "Washington Monument", "true", "Wizards", "Muriel Bowser", "Russell", "true", "Air and Space", "true"]
@@ -101,16 +128,7 @@ var trivia = {
     }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// click events
 
-//When a player answers a question
-$("#playerInput").on("keypress", function(e){
-//  event.preventDefault();
-    if(e.which === 13){
-        trivia.playGame.checkAnswer();
-    }
-});
 
 
 

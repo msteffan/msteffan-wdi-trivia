@@ -189,7 +189,9 @@ footer {
     text-align: center;
 
 }
-
+.answersBox {
+    height: 300px;
+}
 .showAnswers {
     width: 50%;
     margin: 0 auto;

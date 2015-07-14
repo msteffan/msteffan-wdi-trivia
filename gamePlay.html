@@ -4,8 +4,23 @@
     <title>Trivia Project</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
+
+<div class="cities">
+    <div class="whichCity">
+        <h1 class="pickACity"> &#x2190; Which Washington do you know best? &#8594;</h1>
+        <p class="pickACity">Click to test your knowledge!</p>
+    </div>
+        <a href="#playMe">
+            <div id="Seattle" class="mainHeroImage"></div>
+        </a>
+        <a href="#playMe">
+            <div id="DC" class="mainHeroImage"></div>
+        </a>
+</div>
+
 <body id="gamePlay">
     <header id="gameBar">
+        <a name="playMe"></a>
         <div id="questionsCorrect" class="gameStats">
             <h3>Correct Answers</h3>
             <p class="correctAnswers"></p>
@@ -63,16 +78,17 @@
             <div class="numQuestionsLeft">15</div>
         </div>
     </footer>
-    <table class="showAnswers">
-        <tr class="row1">
-            <td>User Answer</td>
-            <td>Correct Answer</td>
-        </tr>
-
-    </table>
+    <div class="answersBox">
+        <table class="showAnswers">
+            <tr class="row1">
+                <td>User Answer</td>
+                <td>Correct Answer</td>
+            </tr>
+        </table>
     </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/smoothScroll.js"></script>
 <script src="js/scripts.js"></script>
 </body>
 </html>
