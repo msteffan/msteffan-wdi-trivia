@@ -1,13 +1,3 @@
-/*.mainHeroImage {
-    display: inline-block;
-    width: 50%;
-    height: 700px;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}*/
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -29,10 +19,10 @@
     display: inline-block;
     width: 50%;
     height: 800px;
-    -webkit-background-size: cover;
+    /*-webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover;*/
 }
 
 #Seattle {
@@ -51,7 +41,7 @@
 .whichCity {
     height: 100px;
     width: 100%;
-    margin 0 auto;
+    margin: 0 auto;
     display: inline-block;
     position: absolute;
     top: 0;
@@ -162,7 +152,7 @@ main {
     width: 97%;
     height: 50px;
     margin: 2% 1.5%;
-    font-size: 18;
+    font-size: 1em;
 
 }
 

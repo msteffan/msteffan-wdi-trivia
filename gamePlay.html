@@ -4,6 +4,7 @@
     <title>Washington Trivia</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
+<body>
 <!-- FIX ME LATER -->
 <div class="cities">
     <div class="whichCity">
@@ -17,10 +18,9 @@
             <div id="DC" class="mainHeroImage"></div>
         </a>
 </div>
-<!-- the body tag is down here :( -->
-<body id="gamePlay">
+<div id="gamePlay">
     <header id="gameBar">
-        <a name="playMe"></a>
+        <a id="playMe"></a>
         <div id="questionsCorrect" class="gameStats">
             <h3>Correct Answers</h3>
             <p class="correctAnswers"></p>
@@ -32,7 +32,7 @@
     </header>
     <main>
         <div id="currentQuestion">
-            <h4 class="question"></h4>
+            <h4 class="question">Here we go!</h4>
         </div>
         <div class="inputBox">
             <input id="playerInput" type="text" placeholder="What's your answer?">
@@ -52,6 +52,7 @@
             </tr>
         </table>
     </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/smoothScroll.js"></script>
 <script src="js/scripts.js"></script>

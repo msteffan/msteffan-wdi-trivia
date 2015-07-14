@@ -1,21 +1,6 @@
-
-// $('a').on('click', function() {
-//     $.smoothScroll({
-//       scrollElement: $('div.scrollme'),
-//       scrollTarget: '#findme',
-//       direction: top,
-//       speed: 1000
-//
-//     });
-//     return false;
-//   });
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // click events
 
-// var source;
-// var sourceQ;
-// var sourceA;
 $("#Seattle").on("click", function(){
     source = "Seattle";
     sourceQ = trivia.questions.Seattle;
@@ -32,14 +17,13 @@ $("#DC").on("click", function(){
 function startGame(){
     trivia.timer.increment();
     trivia.playGame.showQuestion(sourceQ)
-    }
-
 //When a player answers a question
-$("#playerInput").on("keypress", function(e){
-    if(e.which === 13){
-        trivia.playGame.checkAnswer(sourceQ, sourceA);
-    }
-});
+    $("#playerInput").on("keypress", function(e){
+        if(e.which === 13){
+            trivia.playGame.checkAnswer(sourceQ, sourceA);
+        }
+    });
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // game play functions
@@ -83,7 +67,7 @@ var trivia = {
             }
         }
     },
-    // questions for the game
+    // questions for the game, Seattle & DC categories
     questions: {
         Seattle: [
             "Ready to play?",
@@ -155,18 +139,13 @@ var trivia = {
             $(".answersRow").last().append("<td>"+ currentGuess + "</td>")
             $(".answersRow").last().append("<td>"+ sourceA[trivia.num]+"</td>")
         },
+        // display the next question
         showQuestion: function showQuestion(sourceQ) {
+            // if the last question was answered, tell the player how many he/she got correct
             if(trivia.num+2 >= $("h4.question").length){
-                trivia.playGame.lastQuestion();
+                $("h4.question").html("You answered "+ trivia.qCounter.numCorrect + " out of 15 questions correctly!");
             }
             $("h4.question").html(sourceQ[trivia.num])
-            if(trivia.num != 0){
-    //            trivia.num++;
-
-            }
-        },
-        lastQuestion: function lastQuestion() {
-            $("h4.question").html("You answered "+ trivia.qCounter.numCorrect + " out of 15 questions correctly!");
         }
     }
 }
