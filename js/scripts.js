@@ -1,3 +1,16 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// two player mode
+//
+// set up button that, on click, allows you to:
+    // click which city to play
+    // play one game
+    // save the score
+    // play a second  game
+    // compare the second score to the first
+    // determine whose score was higher
+    // display who won
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // click events
 
@@ -18,9 +31,12 @@ $("#resetGame").on("click", function(){
     });
 
 function startGame(){
-    // $("#gamePlay").css({
-    //     "background": "url(images/SeattleSkyline.jpg) no-repeat center fixed",
-    //     "background-size": "cover"})
+    if(source==="Seattle"){
+        var photo = "images/Seattle-left.jpg";
+    } else {
+        var photo = "images/DC_right.jpg";
+    }
+    $("#gamePlay").css("background", "url("+ photo+ ") no-repeat center fixed")
     trivia.timer.increment();
     trivia.playGame.showQuestion(sourceQ)
 //When a player answers a question
@@ -41,7 +57,7 @@ var trivia = {
     num: 0,
     // game timer
     timer: {
-        seconds: 600,
+        seconds: 90,
         newTime: 0,
         increment: function incrementTime() {
             var interval = setInterval(function(){
@@ -49,8 +65,13 @@ var trivia = {
                     trivia.timer.seconds--;
                     $("#timer").html(trivia.timer.seconds);
                 } else {
-                    console.log("time's up")
-                    clearInterval(interval)
+                    var prompt = confirm("You ran out of time! Play again?")
+                    if(prompt){
+                        clearInterval(interval)
+                        trivia.playGame.resetGame()
+                    } else {
+                        clearInterval(interval)
+                    }
                 }
             }, 1000);
         }
@@ -77,7 +98,7 @@ var trivia = {
     // questions for the game, Seattle & DC categories
     questions: {
         Seattle: [
-            "Ready to play?",
+            "Ready to play? Type 'y' to begin.",
             "What is the name of the large outdoor market in Seattle?",
             "What is the name of the tallest building in Seattle?",
             "What is the name of the large manmade lake in Seattle?",
@@ -96,7 +117,7 @@ var trivia = {
             "Which Fortune 500 company is the largest Seattle-area employer?"
         ],
         DC: [
-            "Ready to play?",
+            "Ready to play? Type 'y' to begin.",
             "How do D.C. residents refer to the local rail system?",
             "What is most visited site in Washington, D.C.?",
             "True or false: The president lives at 1600 Pennsylvania Avenue, SW.",
@@ -116,8 +137,9 @@ var trivia = {
     },
     // answers for the questions
     answers: {
-        Seattle: ["yes", "Pike Place","Columbia Tower","Greenlake", "Mount Rainier", "true", "true", "Fremont Troll", "UW", "false", "Hempfest", "Starbuck","Seahawks", "false", "12th Man" , "Microsoft", "Boeing"],
-        DC: ["yes","Metro", "Union Station", "false", "states", "false", "false", "36", "Washington Monument", "true", "Wizards", "Muriel Bowser", "Russell", "true", "Air and Space", "true"]
+        Seattle:
+            ["y", "Pike Place","Columbia Tower","Greenlake", "Mount Rainier", "true", "true", "Fremont Troll", "UW", "false", "Hempfest", "Starbucks","Seahawks", "false", "12th Man", "Microsoft", "Boeing"],
+        DC: ["y","Metro", "Union Station", "false", "states", "false", "false", "36", "Washington Monument", "true", "Wizards", "Muriel Bowser", "Russell", "true", "Air and Space", "true"]
     },
     // functions called in order to play the game
     playGame: {
@@ -143,8 +165,10 @@ var trivia = {
         // add a new row to the table show the correct answer and the user's answer
         displayAnswers: function displayAnswers(sourceA) {
             $(".showAnswers").append("<tr class='answersRow'></tr>");
-            $(".answersRow").last().append("<td>"+ currentGuess + "</td>")
-            $(".answersRow").last().append("<td>"+ sourceA[trivia.num]+"</td>")
+            if(trivia.num!==0){
+                $(".answersRow").last().append("<td>"+ currentGuess + "</td>")
+                $(".answersRow").last().append("<td>"+ sourceA[trivia.num]+"</td>")
+            }
         },
         // display the next question
         showQuestion: function showQuestion(sourceQ) {
