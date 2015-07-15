@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// click events
+// functions on load
 $(document).ready(function() {
     $('a').smoothScroll();
     $(this).scrollTop(0);
@@ -7,6 +7,9 @@ $(document).ready(function() {
 if($(window).width() <= 1050){
   alert("Yike—your browswer screen is awfully small! For the best experience, expand the browser to full screen!")
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// click events
 
 $("#Seattle").on("click", function(){
     source = "Seattle";
@@ -28,8 +31,14 @@ $("#twoPlayer").on("click", function(){
 
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// game play functions
+
+// this function starts the game when a user clicks on a city div
 function startGame(){
+    // starts the timer
     trivia.timer.increment();
+    // displays the first question
     trivia.playGame.showQuestion(sourceQ)
 //When a player answers a question
     $("#playerInput").on("keypress", function(e){
@@ -38,21 +47,20 @@ function startGame(){
         }
     });
 }
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// game play functions
-
-
+// global variables
 var currentGuess;
 var interval;
 var answers;
+var firstScore;
+var playerTwo;
+// object that controls everything else
 var trivia = {
     num: 0,
 // controls the game timer
     timer: {
         seconds: 90,
         newTime: 0,
+        // starts the timer when invoked
         increment: function incrementTime() {
             interval = setInterval(function(){
                 if(trivia.timer.seconds > 0){
@@ -63,6 +71,7 @@ var trivia = {
                 }
             }, 1000);
         },
+        // stops the timer when invoked
         stopTimer: function stopTimer(){
             if(trivia.timer.seconds < 0){
                 var prompt = confirm("You ran out of time! Play again?")
@@ -93,6 +102,7 @@ var trivia = {
             trivia.qCounter.numAsked++;
             var numRemaining = trivia.qCounter.totalQ - trivia.qCounter.numAsked;
             $(".numQuestionsLeft").html(numRemaining)
+            // if the user answers all the questions, it displays that the game is over
             if(numRemaining<0){
                 $(".numQuestionsLeft").html("Game is over!");
             }
@@ -139,7 +149,7 @@ var trivia = {
         ]
     },
     // answers for the questions
-    // yes, you must have the exact right answer to get the point. The world needs more people who use correct capitalization.
+    // yes, you must have the exact right answer to get the point. The world needs more people who use correct spelling.
     answers: {
         Seattle:
             ["y", "pike place","columbia center","greenlake", "mount rainier", "true", "true", "fremont troll", "uw", "false", "hempfest", "starbucks","seahawks", "false", "12th man", "microsoft", "boeing"],
@@ -147,33 +157,32 @@ var trivia = {
     },
     // functions called in order to play the game
     playGame: {
+        // this is the main function that checks the player's answer against the value stored as the correct answer.
         checkAnswer: function checkAnswer(question, answer) {
+            // pass in the right arrays for the answer, based on which category is being played
             var sourceA = answer;
             var sourceQ = question;
             event.preventDefault();
             //get the player's guess
             currentGuess = $("#playerInput").val();
+            // if the player's guess matches the answer in the array, add 1 to the correct answers
             if (currentGuess == sourceA[trivia.num])
                 trivia.qCounter.addCorrect();
-            // hides prev questions and displays the next question
+            // after a question is answered, hide it and display the next question
             trivia.playGame.displayAnswers(sourceA);
+            // add one to the game counter
             trivia.num++
-            //display next question
-            // check = localStorage.getItem("isItTwoPlayers");
-            // if(check==="yes"){
-            //     trivia.playGame.compareScores();
-            // }
+            //display next question in the questions array
             trivia.playGame.showQuestion(sourceQ);
             // decrease numQuestionsLeft by one
             trivia.qCounter.getTotal();
             //resets input box to empty
             $("#playerInput").val("");
-
-
         },
         // add a new row to the table show the correct answer and the user's answer
         displayAnswers: function displayAnswers(sourceA) {
             $(".showAnswers").append("<tr class='answersRow'></tr>");
+            // because the first answer is just the 'y' to start the game, I wanted to skip it and not add it to the table of answers. Thus: if the number != 0, add the player's guess and the corect answer to the table
             if(trivia.num!==0){
                 $(".answersRow").last().append("<td>"+ currentGuess + "</td>")
                 $(".answersRow").last().append("<td>"+ sourceA[trivia.num]+"</td>")
@@ -181,22 +190,26 @@ var trivia = {
         },
         // display the next question
         showQuestion: function showQuestion(sourceQ) {
-            // if the final question was answered, tell the player how many he/she got correct
+            // set the number of correct answers as the current player's score
             answers = trivia.qCounter.numCorrect - 1;
+            // get the value of "check" from session storage in order to see if this is a two-player game.
             check = sessionStorage.getItem("isItTwoPlayers");
+            // if the final question was answered AND this is a two-player game, run the function to compare scores
             if(trivia.num+1 > $(sourceQ).length && check==="yes"){
                 trivia.playGame.compareScores();
+            // if the final question was answered, tell the player how many he/she got correct
             } else if (trivia.num+1 > $(sourceQ).length){
                 $("h4.question").html("You answered "+ answers + " out of 15 questions correctly! Scroll down to see how your knowledge stacks up!");
                 // stop the timer after the final question is answered
                 trivia.timer.stopTimer();
+            // if the player is not yet on the final question, display the next question
             } else {
                 $("h4.question").html(sourceQ[trivia.num])
             }
         },
         // resets the game page on click
         resetGame: function resetGame() {
-            // go to the top
+            // scroll to the top
             function goUp(){
                 $('a').smoothScroll();
             }
@@ -205,7 +218,7 @@ var trivia = {
         },
         // sets up two player game
         twoPlayerMode: function twoPlayerMode(){
-            //store the first score
+            //store the first score in the browser storage, as well as a "check" value to indicate that this is a two-player game
             var secondPlayer = "yes";
             var playerOne = answers;
             sessionStorage.setItem("isItTwoPlayers", secondPlayer);
@@ -213,18 +226,22 @@ var trivia = {
             // reload the page
             trivia.playGame.resetGame();
         },
+        // function that compares two scores if the final question is answered AND the two-player mode is running
         compareScores: function compareScores(){
-            // get the first score
+            // get the first player's score from storage
             firstScore = parseInt(sessionStorage.getItem("playerOneScore"));
             // play a second  game
             playerTwo = answers;
-            // compare the second score to the first
+            // compare the second score to the first and determine a winner
             if(firstScore > playerTwo){
                 $("h4.question").html("Player one wins! Player one answered "+ firstScore + " out of 15 questions correctly! Player two answered "+playerTwo+".");
-            } else {
+            } else if(firstScore < playerTwo)  {
                 $("h4.question").html("Player two wins! Player two answered "+ playerTwo + " out of 15 questions correctly! Player one answered "+firstScore+".");
 
+            } else {
+                $("h4.question").html("It's a tie!");
             }
+            // clear the storage
             sessionStorage.removeItem("playerOneScore")
             sessionStorage.removeItem("isItTwoPlayers")
         }

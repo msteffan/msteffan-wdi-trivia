@@ -8,6 +8,8 @@ body {
     margin: 0;
 }
 
+/*styles for header/logo*/
+
 .logo {
     margin-left: auto;
     margin-right: auto;
@@ -42,6 +44,9 @@ body {
     left: 0;
 
 }
+
+/*styles for main body--where game play happens*/
+
 main {
     clear: both;
 }
@@ -127,14 +132,6 @@ h4 {
 
 }
 
-a {
-    text-decoration: none;
-    color: #EAFFC5;
-}
-
-a:visited {
-    color: #EAFFC5;
-}
 
 #questionsCorrect {
     display: block;
@@ -176,6 +173,8 @@ a:visited {
     z-index: 0;
 }
 
+/*styles for skyline images and table of answers below*/
+
 .showAnswers {
     width: 40%;
     margin: 0 auto;
@@ -202,6 +201,8 @@ a:visited {
     color: #FF5A66;
 }
 
+/*styles for footer/buttons to reset game or enable two player*/
+
 footer {
     font-family: bebas;
     color: #B9BBBD;
@@ -227,4 +228,12 @@ footer {
 .newGameText {
     padding-top: 0;
     color: #54B8EA;
+}
+a {
+    text-decoration: none;
+    color: #EAFFC5;
+}
+
+a:visited {
+    color: #EAFFC5;
 }
