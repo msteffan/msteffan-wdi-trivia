@@ -98,7 +98,7 @@ var trivia = {
 // questions for the game--Seattle & DC categories
     questions: {
         Seattle: [
-            "Ready to play? Type 'y' to begin. Remember: Spelling and capitalization count!",
+            "Ready to play? Type 'y' to begin. Remember: Spelling counts!",
             "What is the name of the large outdoor market in Seattle?",
             "What is the name of the tallest building in Seattle?",
             "What is the name of the large manmade lake in Seattle?",
@@ -117,7 +117,7 @@ var trivia = {
             "Which Fortune 500 company is the largest Seattle-area employer?"
         ],
         DC: [
-            "Ready to play? Type 'y' to begin. Remember: Spelling and capitalization count!",
+            "Ready to play? Type 'y' to begin. Remember: Spelling counts!",
             "How do D.C. residents refer to the local rail system?",
             "What is most visited site in Washington, D.C.?",
             "True or false: The president lives at 1600 Pennsylvania Avenue, SW.",
