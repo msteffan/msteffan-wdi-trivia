@@ -111,7 +111,7 @@ var trivia = {
 // questions for the game--Seattle & DC categories
     questions: {
         Seattle: [
-            "Ready to play? Type 'y' to begin. Don't capitalize your answers, but use correct spelling!",
+            "Ready to play? Type 'y' to begin. Don't capitalize your answers, and use correct spelling!",
             "What is the name of the large outdoor market in Seattle?",
             "What is the name of the tallest building in Seattle?",
             "What is the name of the large manmade lake in Seattle?",
@@ -123,14 +123,14 @@ var trivia = {
             "True or False: People in Seattle buy the fewest sunglasses per capita than any other U.S. city.",
             "Which annual marijuana festival is the largest 'Legalize It' gathering in the country?",
             "Which coffee giant is headquartered in Seattle?",
-            "What is the only Seattle mens' pro sports team to win a championship?",
+            "What is the only Seattle mens' pro sports team to win a championship in the last 10 years?",
             "True or false: More than 1 million people live in Seattle.",
             "What flag flies atop the Space Needle during the NFL season?",
             "Bill Gates founded which software giant located in the Seattle area?",
             "Which Fortune 500 company is the largest Seattle-area employer?"
         ],
         DC: [
-            "Ready to play? Type 'y' to begin. Don't capitalize your answers, but use correct spelling!",
+            "Ready to play? Type 'y' to begin. Don't capitalize your answers, and use correct spelling!",
             "True or false: The city of D.C. is divided into quadrants, with the U.S. Capitol at the center.",
             "How do D.C. residents refer to the local rail system?",
             "What is most visited site in Washington, D.C.?",
