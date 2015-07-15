@@ -139,8 +139,8 @@ var trivia = {
     // yes, you must have the exact right answer to get the point. The world needs more people who use correct capitalization.
     answers: {
         Seattle:
-            ["y", "Pike Place","Columbia Tower","Greenlake", "Mount Rainier", "true", "true", "Fremont Troll", "UW", "false", "Hempfest", "Starbucks","Seahawks", "false", "12th Man", "Microsoft", "Boeing"],
-        DC: ["y","Metro", "Union Station", "false", "states", "false", "false", "36", "Washington Monument", "true", "Wizards", "Muriel Bowser", "Russell", "true", "Air and Space", "true"]
+            ["y", "pike place","columbia center","greenlake", "mount rainier", "true", "true", "fremont troll", "uw", "false", "hempfest", "starbucks","seahawks", "false", "12th man", "microsoft", "boeing"],
+        DC: ["y","metro", "union station", "false", "states", "false", "false", "36", "washington monument", "true", "wizards", "muriel bowser", "russell", "true", "air and space", "true"]
     },
     // functions called in order to play the game
     playGame: {
