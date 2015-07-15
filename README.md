@@ -33,7 +33,7 @@ slightly ambitious user stories
 ***
 Technologies used
 
-This trivia application is built using HTML, CSS, and jQuery. There is a jQuery plugin called "SmoothScroll."
+This trivia application is built using HTML, CSS, and jQuery. There is a jQuery plugin called "SmoothScroll." (I also relied on one complete personal meltdown, which is a framework that I don't recommend. :) )
 
 ***
 
