@@ -61,8 +61,11 @@ To run this game locally:
 
 Unsolved problems
 
-No real unsolved "problems" per se, as all of the logic works and the HTML/CSS check out in the validator. However...
-
 1) My CSS isn't as DRY as I know it could be, because I started over on the HTML and CSS around 7 p.m. on Tuesday evening. As a result, I don't think this is a reflection of my total skill in writing DRY code, but rather a reflection of how quickly I put together CSS that works.
 
 2) I'm pretty frustrated with the jQuery for this project because I very quickly ran into things I didn't know how to do. For example, we learned in class how to use .bind(this), but we didn't discuss how to apply this in a situation like the one I set up. Basically, if you have functions x, y, and z--all of which use "this" in their context--how do I set up the .bind() structure if function z calls x and y? Another unsolved problem is that I don't know when to abstract code and when to leave it; for example, I would actually find it more confusing to use "this" than to invoke the function directly (i.e. "trivia.gamePlay.checkAnswer()" vs "this.checkAnswer()" ), so I'm not actually sure *when* it is best to use "this" in order to absract it. When I brought both of these issues up to an instructor, he said what I had was fine and that I shouldn't try to refactor it because we hadn't covered that. That was frustrating because I felt like it was a squashed learning opportunity.
+
+3) In order to check out the answers, I had to write correct ones, which the user answer needs to match exactly. However, everyone who has played has stated his/her annoyance with having to spell exactly correct or use the exact phrasing. I am not sure how I would write something that would accept a "correct" answer that has incorrect spelling (i.e. "Mount Rainier" vs "Mt Rainier", "Greenlake vs Green lake" etc)
+
+
+
