@@ -4,6 +4,9 @@ $(document).ready(function() {
     $('a').smoothScroll();
     $(this).scrollTop(0);
 });
+if($(window).width() <= 1050){
+  alert("Yike—your browswer screen is awfully small! For the best experience, expand the browser to full screen!")
+}
 
 $("#Seattle").on("click", function(){
     source = "Seattle";
