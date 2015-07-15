@@ -160,7 +160,7 @@ var trivia = {
     // yes, you must have the exact right answer to get the point. The world needs more people who use correct spelling.
     answers: {
         Seattle:
-            ["y", "pike place","columbia center","greenlake", "mount rainier", "true", "true", "fremont troll", "uw", "false", "hempfest", "starbucks","seahawks", "false", "12th man", "microsoft", "boeing"],
+            ["y", "pike place","columbia center","green lake", "mount rainier", "true", "true", "fremont troll", "uw", "false", "hempfest", "starbucks","seahawks", "false", "12th man", "microsoft", "boeing"],
         DC: ["y","true", "metro", "union station", "false", "states", "false", "false", "36", "washington monument", "true", "wizards", "muriel bowser", "russell", "true", "air and space", "true"]
     },
     // functions called in order to play the game
