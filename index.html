@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <title>Seattle or DC?</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/styles1.css">
+</head>
+
+<body>
+    <header>
+        <a href="#playMe">
+            <div id="Seattle" class="mainHeroImage"></div>
+        </a>
+        <a href="#playMe">
+            <div id="DC" class="mainHeroImage"></div>
+        </a>
+        <div class="cities"><img class="logo" src="images/SVG/SeattleDCTrivia.svg" /></div>
+    </header>
+    <main>
+        <div id="this-is-floating">
+            <a id="playMe"></a>
+            <img class="clock" src="images/svg/StopWatch.svg" />
+            <div id="remainingTime" class="gameStats">
+                <h3>Time Remaining</h3>
+                <div id="timer"></div>
+            </div>
+            <div id="questionsLeft">
+                <h3 class="qTitle">Questions to go:</h3>
+                <div class="numQuestionsLeft">16</div>
+            </div>
+        </div>
+        <div class="q-and-a">
+            <div id="currentQuestion">
+                <h4 class="question">Click Seattle or DC in the logo to play!</h4>
+            </div>
+            <div class="inputBox">
+                <input id="playerInput" type="text" placeholder="What's your answer?">
+            </div>
+        </div>
+        <div id="questionsCorrect" class="gameStats">
+            <h3 class="midAnswers">Correct Answers</h3>
+            <p class="correctAnswers"></p>
+            <div id="circle"></div>
+        </div>
+    </main>
+    <div id="skylineBar">
+        <img class="skyline" src="images/SeattleSkyline.jpg"/>
+        <img class="skyline" src="images/DCSkyline.jpg"/>
+    </div>
+    <footer>
+        <div class="answersBox">
+            <table class="showAnswers">
+                <tr class="row1">
+                    <td>User Answer</td>
+                    <td>Correct Answer</td>
+                </tr>
+            </table>
+        </div>
+        <div class="buttons">
+            <div id="resetGame" class="gameButton">
+                <a href="#top"><p class="newGameText">Play new game</p></a>
+            </div>
+            <div id="twoPlayer" class="gameButton">
+                <a href="#top"><p class="newGameText">Two-Player</p></a>
+            </div>
+        </div>
+    </footer>
+<!--
+<div id="gamePlay">
+    <header id="gameBar">
+    </header>
+</div>
+ -->
+    <!-- <footer>
+        <div id="questionsLeft">
+            <h3 class="footerP">Questions to go:</h3>
+            <div class="numQuestionsLeft">16</div>
+        </div>
+    </footer> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/smoothScroll.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>
