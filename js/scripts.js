@@ -1,18 +1,3 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// two player mode
-//
-// set up button that, on click, allows you to:
-    // click which city to play
-    // play one game
-    // save the score
-    // play a second  game
-
-    // compare the second score to the first
-    // determine whose score was higher
-    // display who won
-
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // click events
 $(document).ready(function() {
@@ -35,6 +20,10 @@ $("#DC").on("click", function(){
 $("#resetGame").on("click", function(){
     trivia.playGame.resetGame();
     });
+$("#twoPlayer").on("click", function(){
+    trivia.playGame.twoPlayerMode();
+
+});
 
 function startGame(){
     trivia.timer.increment();
@@ -54,6 +43,7 @@ function startGame(){
 
 var currentGuess;
 var interval;
+var answers;
 var trivia = {
     num: 0,
 // controls the game timer
@@ -166,11 +156,16 @@ var trivia = {
             trivia.playGame.displayAnswers(sourceA);
             trivia.num++
             //display next question
+            // check = localStorage.getItem("isItTwoPlayers");
+            // if(check==="yes"){
+            //     trivia.playGame.compareScores();
+            // }
             trivia.playGame.showQuestion(sourceQ);
             // decrease numQuestionsLeft by one
             trivia.qCounter.getTotal();
             //resets input box to empty
             $("#playerInput").val("");
+
 
         },
         // add a new row to the table show the correct answer and the user's answer
@@ -184,34 +179,52 @@ var trivia = {
         // display the next question
         showQuestion: function showQuestion(sourceQ) {
             // if the final question was answered, tell the player how many he/she got correct
-            var answers = trivia.qCounter.numCorrect - 1;
-            if(trivia.num+1 > $(sourceQ).length){
+            answers = trivia.qCounter.numCorrect - 1;
+            check = sessionStorage.getItem("isItTwoPlayers");
+            if(trivia.num+1 > $(sourceQ).length && check==="yes"){
+                trivia.playGame.compareScores();
+            } else if (trivia.num+1 > $(sourceQ).length){
                 $("h4.question").html("You answered "+ answers + " out of 15 questions correctly! Scroll down to see how your knowledge stacks up!");
                 // stop the timer after the final question is answered
                 trivia.timer.stopTimer();
+            } else {
+                $("h4.question").html(sourceQ[trivia.num])
             }
-            // otherwise, display the next question
-            $("h4.question").html(sourceQ[trivia.num])
         },
         // resets the game page on click
         resetGame: function resetGame() {
-            ///Remove the anchor link from the URL
-            // var hash = location.hash.replace('#','');
-            // if(hash != ''){
-            //     location.hash = '';
-            // }
-            //reload the page
+            // go to the top
             function goUp(){
                 $('a').smoothScroll();
             }
-            // trivia.timer.stopTimer();
-            // $(".showAnswers").empty();
-            // trivia.num = 0;
-            // trivia.qCounter.numCorrect = 0;
-
+            // reload the page
             location.reload();
+        },
+        // sets up two player game
+        twoPlayerMode: function twoPlayerMode(){
+            //store the first score
+            var secondPlayer = "yes";
+            var playerOne = answers;
+            sessionStorage.setItem("isItTwoPlayers", secondPlayer);
+            sessionStorage.setItem("playerOneScore", playerOne);
+            // reload the page
+            trivia.playGame.resetGame();
+        },
+        compareScores: function compareScores(){
+            // get the first score
+            firstScore = parseInt(sessionStorage.getItem("playerOneScore"));
+            // play a second  game
+            playerTwo = answers;
+            // compare the second score to the first
+            if(firstScore > playerTwo){
+                $("h4.question").html("Player one wins! Player one answered "+ firstScore + " out of 15 questions correctly! Player two answered "+playerTwo+".");
+            } else {
+                $("h4.question").html("Player two wins! Player two answered "+ playerTwo + " out of 15 questions correctly! Player one answered "+firstScore+".");
 
-
+            }
+            sessionStorage.removeItem("playerOneScore")
+            sessionStorage.removeItem("isItTwoPlayers")
         }
+
     }
 }

@@ -211,18 +211,24 @@ footer {
     color: #B9BBBD;
 }
 
-#resetGame {
-    height: 50px;
+.buttons {
+    display: inline-block;
+    width: 40%;
+    margin: 4% 33% 4% 35%;
+}
+
+.gameButton {
+    height: 60px;
     width: 200px;
     text-align: center;
-    margin: 30px auto;
     background-color: #B7EA65;
     /*font-family: Birds of Paradise;*/
     font-size: 1.5em;
+    display: inline-block;
 
 }
 
 .newGameText {
-    padding-top: 16px;
+    padding-top: 0;
     color: #54B8EA;
 }
