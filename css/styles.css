@@ -152,7 +152,7 @@ h4 {
     position: relative;
     height: 30px;
     z-index: 1;
-    margin: 30px auto -33px auto;
+    margin: 30px auto -33px -10px;
 }
 
 .answersBox {
@@ -189,8 +189,9 @@ h4 {
 
 .skyline {
     display: inline-block;
-    width: 50%;
-    margin-left: -5px;
+    width: 51%;
+    margin-left: -9px;
+    margin-right: -13px;
     height: 300px;
 }
 

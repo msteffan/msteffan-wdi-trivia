@@ -131,6 +131,7 @@ var trivia = {
         ],
         DC: [
             "Ready to play? Type 'y' to begin. Remember: Spelling and capitalization count!",
+            "True or false: The city of D.C. is divided into quadrants, with the U.S. Capitol at the center.",
             "How do D.C. residents refer to the local rail system?",
             "What is most visited site in Washington, D.C.?",
             "True or false: The president lives at 1600 Pennsylvania Avenue, SW.",
@@ -153,7 +154,7 @@ var trivia = {
     answers: {
         Seattle:
             ["y", "pike place","columbia center","greenlake", "mount rainier", "true", "true", "fremont troll", "uw", "false", "hempfest", "starbucks","seahawks", "false", "12th man", "microsoft", "boeing"],
-        DC: ["y","metro", "union station", "false", "states", "false", "false", "36", "washington monument", "true", "wizards", "muriel bowser", "russell", "true", "air and space", "true"]
+        DC: ["y","true", "metro", "union station", "false", "states", "false", "false", "36", "washington monument", "true", "wizards", "muriel bowser", "russell", "true", "air and space", "true"]
     },
     // functions called in order to play the game
     playGame: {
@@ -199,7 +200,7 @@ var trivia = {
                 trivia.playGame.compareScores();
             // if the final question was answered, tell the player how many he/she got correct
             } else if (trivia.num+1 > $(sourceQ).length){
-                $("h4.question").html("You answered "+ answers + " out of 15 questions correctly! Scroll down to see how your knowledge stacks up!");
+                $("h4.question").html("You answered "+ answers + " out of 16 questions correctly! Scroll down to see how your knowledge stacks up!");
                 // stop the timer after the final question is answered
                 trivia.timer.stopTimer();
             // if the player is not yet on the final question, display the next question

@@ -1,5 +1,8 @@
 # msteffan-wdi-triva
-This repository contains the code for WDI Project #1, which will be a self-scoring trivia game.
+This repository contains the code for Melissa Steffan's WDI Project #1, which is be a self-scoring trivia game.
+
+The inspiration for this game came from something I like to say about myself, which is that I went from "one Washington to the other" when I moved from Seattle to D.C. I decided to pit the two Washingtons against each other and create a two-category game with pre-populated trivia about each of my "home" cities.
+
 
 ***
 
