@@ -1,22 +1,16 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
-// click events
-=======
 // functions on load
->>>>>>> gh-pages
 $(document).ready(function() {
     $('a').smoothScroll();
     $(this).scrollTop(0);
 });
-<<<<<<< HEAD
-=======
 if($(window).width() <= 1050){
   alert("Yike—your browswer screen is awfully small! For the best experience, expand the browser to full screen!")
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // click events
->>>>>>> gh-pages
+
 
 $("#Seattle").on("click", function(){
     source = "Seattle";
@@ -38,10 +32,7 @@ $("#twoPlayer").on("click", function(){
 
 });
 
-<<<<<<< HEAD
-function startGame(){
-    trivia.timer.increment();
-=======
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // game play functions
 
@@ -50,7 +41,6 @@ function startGame(){
     // starts the timer
     trivia.timer.increment();
     // displays the first question
->>>>>>> gh-pages
     trivia.playGame.showQuestion(sourceQ)
 //When a player answers a question
     $("#playerInput").on("keypress", function(e){
@@ -59,17 +49,11 @@ function startGame(){
         }
     });
 }
-<<<<<<< HEAD
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // game play functions
 
-
-var currentGuess;
-var interval;
-var answers;
-=======
 // global variables
 var currentGuess;
 var interval;
@@ -77,17 +61,13 @@ var answers;
 var firstScore;
 var playerTwo;
 // object that controls everything else
->>>>>>> gh-pages
 var trivia = {
     num: 0,
 // controls the game timer
     timer: {
         seconds: 90,
         newTime: 0,
-<<<<<<< HEAD
-=======
         // starts the timer when invoked
->>>>>>> gh-pages
         increment: function incrementTime() {
             interval = setInterval(function(){
                 if(trivia.timer.seconds > 0){
@@ -98,10 +78,7 @@ var trivia = {
                 }
             }, 1000);
         },
-<<<<<<< HEAD
-=======
         // stops the timer when invoked
->>>>>>> gh-pages
         stopTimer: function stopTimer(){
             if(trivia.timer.seconds < 0){
                 var prompt = confirm("You ran out of time! Play again?")
@@ -132,10 +109,7 @@ var trivia = {
             trivia.qCounter.numAsked++;
             var numRemaining = trivia.qCounter.totalQ - trivia.qCounter.numAsked;
             $(".numQuestionsLeft").html(numRemaining)
-<<<<<<< HEAD
-=======
             // if the user answers all the questions, it displays that the game is over
->>>>>>> gh-pages
             if(numRemaining<0){
                 $(".numQuestionsLeft").html("Game is over!");
             }
@@ -144,11 +118,7 @@ var trivia = {
 // questions for the game--Seattle & DC categories
     questions: {
         Seattle: [
-<<<<<<< HEAD
             "Ready to play? Type 'y' to begin. Remember: Spelling counts!",
-=======
-            "Ready to play? Type 'y' to begin. Remember: Spelling and capitalization count!",
->>>>>>> gh-pages
             "What is the name of the large outdoor market in Seattle?",
             "What is the name of the tallest building in Seattle?",
             "What is the name of the large manmade lake in Seattle?",
@@ -167,12 +137,8 @@ var trivia = {
             "Which Fortune 500 company is the largest Seattle-area employer?"
         ],
         DC: [
-<<<<<<< HEAD
             "Ready to play? Type 'y' to begin. Remember: Spelling counts!",
-=======
-            "Ready to play? Type 'y' to begin. Remember: Spelling and capitalization count!",
             "True or false: The city of D.C. is divided into quadrants, with the U.S. Capitol at the center.",
->>>>>>> gh-pages
             "How do D.C. residents refer to the local rail system?",
             "What is most visited site in Washington, D.C.?",
             "True or false: The president lives at 1600 Pennsylvania Avenue, SW.",
@@ -191,17 +157,6 @@ var trivia = {
         ]
     },
     // answers for the questions
-<<<<<<< HEAD
-    // yes, you must have the exact right answer to get the point. The world needs more people who use correct capitalization.
-    answers: {
-        Seattle:
-            ["y", "Pike Place","Columbia Tower","Greenlake", "Mount Rainier", "true", "true", "Fremont Troll", "UW", "false", "Hempfest", "Starbucks","Seahawks", "false", "12th Man", "Microsoft", "Boeing"],
-        DC: ["y","Metro", "Union Station", "false", "states", "false", "false", "36", "Washington Monument", "true", "Wizards", "Muriel Bowser", "Russell", "true", "Air and Space", "true"]
-    },
-    // functions called in order to play the game
-    playGame: {
-        checkAnswer: function checkAnswer(question, answer) {
-=======
     // yes, you must have the exact right answer to get the point. The world needs more people who use correct spelling.
     answers: {
         Seattle:
@@ -213,24 +168,11 @@ var trivia = {
         // this is the main function that checks the player's answer against the value stored as the correct answer.
         checkAnswer: function checkAnswer(question, answer) {
             // pass in the right arrays for the answer, based on which category is being played
->>>>>>> gh-pages
             var sourceA = answer;
             var sourceQ = question;
             event.preventDefault();
             //get the player's guess
             currentGuess = $("#playerInput").val();
-<<<<<<< HEAD
-            if (currentGuess == sourceA[trivia.num])
-                trivia.qCounter.addCorrect();
-            // hides prev questions and displays the next question
-            trivia.playGame.displayAnswers(sourceA);
-            trivia.num++
-            //display next question
-            // check = localStorage.getItem("isItTwoPlayers");
-            // if(check==="yes"){
-            //     trivia.playGame.compareScores();
-            // }
-=======
             // if the player's guess matches the answer in the array, add 1 to the correct answers
             if (currentGuess == sourceA[trivia.num])
                 trivia.qCounter.addCorrect();
@@ -239,25 +181,16 @@ var trivia = {
             // add one to the game counter
             trivia.num++
             //display next question in the questions array
->>>>>>> gh-pages
             trivia.playGame.showQuestion(sourceQ);
             // decrease numQuestionsLeft by one
             trivia.qCounter.getTotal();
             //resets input box to empty
             $("#playerInput").val("");
-<<<<<<< HEAD
-
-
-=======
->>>>>>> gh-pages
         },
         // add a new row to the table show the correct answer and the user's answer
         displayAnswers: function displayAnswers(sourceA) {
             $(".showAnswers").append("<tr class='answersRow'></tr>");
-<<<<<<< HEAD
-=======
             // because the first answer is just the 'y' to start the game, I wanted to skip it and not add it to the table of answers. Thus: if the number != 0, add the player's guess and the corect answer to the table
->>>>>>> gh-pages
             if(trivia.num!==0){
                 $(".answersRow").last().append("<td>"+ currentGuess + "</td>")
                 $(".answersRow").last().append("<td>"+ sourceA[trivia.num]+"</td>")
@@ -265,17 +198,6 @@ var trivia = {
         },
         // display the next question
         showQuestion: function showQuestion(sourceQ) {
-<<<<<<< HEAD
-            // if the final question was answered, tell the player how many he/she got correct
-            answers = trivia.qCounter.numCorrect - 1;
-            check = sessionStorage.getItem("isItTwoPlayers");
-            if(trivia.num+1 > $(sourceQ).length && check==="yes"){
-                trivia.playGame.compareScores();
-            } else if (trivia.num+1 > $(sourceQ).length){
-                $("h4.question").html("You answered "+ answers + " out of 15 questions correctly! Scroll down to see how your knowledge stacks up!");
-                // stop the timer after the final question is answered
-                trivia.timer.stopTimer();
-=======
             // set the number of correct answers as the current player's score
             answers = trivia.qCounter.numCorrect - 1;
             // get the value of "check" from session storage in order to see if this is a two-player game.
@@ -289,18 +211,13 @@ var trivia = {
                 // stop the timer after the final question is answered
                 trivia.timer.stopTimer();
             // if the player is not yet on the final question, display the next question
->>>>>>> gh-pages
             } else {
                 $("h4.question").html(sourceQ[trivia.num])
             }
         },
         // resets the game page on click
         resetGame: function resetGame() {
-<<<<<<< HEAD
-            // go to the top
-=======
             // scroll to the top
->>>>>>> gh-pages
             function goUp(){
                 $('a').smoothScroll();
             }
@@ -309,11 +226,7 @@ var trivia = {
         },
         // sets up two player game
         twoPlayerMode: function twoPlayerMode(){
-<<<<<<< HEAD
-            //store the first score
-=======
             //store the first score in the browser storage, as well as a "check" value to indicate that this is a two-player game
->>>>>>> gh-pages
             var secondPlayer = "yes";
             var playerOne = answers;
             sessionStorage.setItem("isItTwoPlayers", secondPlayer);
@@ -321,20 +234,6 @@ var trivia = {
             // reload the page
             trivia.playGame.resetGame();
         },
-<<<<<<< HEAD
-        compareScores: function compareScores(){
-            // get the first score
-            firstScore = parseInt(sessionStorage.getItem("playerOneScore"));
-            // play a second  game
-            playerTwo = answers;
-            // compare the second score to the first
-            if(firstScore > playerTwo){
-                $("h4.question").html("Player one wins! Player one answered "+ firstScore + " out of 15 questions correctly! Player two answered "+playerTwo+".");
-            } else {
-                $("h4.question").html("Player two wins! Player two answered "+ playerTwo + " out of 15 questions correctly! Player one answered "+firstScore+".");
-
-            }
-=======
         // function that compares two scores if the final question is answered AND the two-player mode is running
         compareScores: function compareScores(){
             // get the first player's score from storage
@@ -351,7 +250,6 @@ var trivia = {
                 $("h4.question").html("It's a tie!");
             }
             // clear the storage
->>>>>>> gh-pages
             sessionStorage.removeItem("playerOneScore")
             sessionStorage.removeItem("isItTwoPlayers")
         }
