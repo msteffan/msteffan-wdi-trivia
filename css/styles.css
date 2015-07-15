@@ -3,9 +3,10 @@
     margin: 0;
     font-family: Georgia;
     text-decoration: none;
+    background-color: #B7EA65;
 }
 a:visited {
-    color: black; 
+    color: black;
 }
 
 /*STYLES FOR MAIN PAGE*/
@@ -13,12 +14,14 @@ a:visited {
 .cities {
     display: inline-block;
     width: 100%;
-    background-color: black;
+    background-color: #B7EA65;
+    background: url(../images/SVG/SeattleDCTrivia.svg) no-repeat center center;
+    height: 500px;
 }
 
 
 
-#DC {
+/*#DC {
     padding-top: 100px;
     background: url(../images/DC_right.jpg) no-repeat center center fixed;
     display: inline-block;
@@ -41,7 +44,7 @@ a:visited {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover;*/
 
 }
 
@@ -65,13 +68,14 @@ a:visited {
 /*STYLES FOR GAME PAGE*/
 
 #gamePlay {
-    background-color: white;
-    background-size: cover;
+    background-color: #EAFFC5;
+    /*background-size: cover;*/
 }
 
 #gameBar {
     width: 100%;
     height: 150px;
+    background-color: #EAFFC5;
 }
 
 .gameStats {
@@ -79,11 +83,13 @@ a:visited {
     display: inline-block;
     text-align: center;
     margin-top: 30px;
+    background-color: #EAFFC5;
 }
 
 p.correctAnswers {
     display: inline-block;
     padding-top: 10px;
+    background-color: #EAFFC5;
 }
 
 #questionsCorrect {
@@ -109,17 +115,17 @@ main {
     clear: both;
     width: 100%;
     height: 300px;
+    background-color: #EAFFC5;
 }
 
 
 
 #currentQuestion {
-    width: 40%;
-    height: 200px;
+    width: 60%;
+    height: 100px;
     margin: 0 auto;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: #00245D;
+    border: 1px solid #EAFFC5;
+    /*border-radius: 10px;*/
 }
 
 .question {
@@ -131,11 +137,9 @@ main {
 }
 
 .inputBox {
-    width: 40%;
+    width: 60%;
     height: 75px;
-    margin: 20px auto;
-    background-color: #00245D;
-    border-radius: 10px;
+    margin: 0 auto;
 
 }
 
@@ -167,13 +171,13 @@ main {
     padding-top: 25px;
 }
 
-#playerInput {
+/*#playerInput {
     width: 97%;
     height: 50px;
     margin: 2% 1.5%;
     font-size: 1em;
 
-}
+}*/
 
 footer {
     margin-top: 15px;

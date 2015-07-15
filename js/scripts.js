@@ -10,15 +10,15 @@
     // compare the second score to the first
     // determine whose score was higher
     // display who won
-    $(document).ready(function() {
 
-          $('a').smoothScroll();
-          $(this).scrollTop(0);
-            });
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // click events
+$(document).ready(function() {
+    $('a').smoothScroll();
+    $(this).scrollTop(0);
+});
 
 $("#Seattle").on("click", function(){
     source = "Seattle";
@@ -37,12 +37,6 @@ $("#resetGame").on("click", function(){
     });
 
 function startGame(){
-    if(source==="Seattle"){
-        var photo = "images/Seattle-left.jpg";
-    } else {
-        var photo = "images/DC_right.jpg";
-    }
-    $("#gamePlay").css("background", "url("+ photo+ ") no-repeat center fixed")
     trivia.timer.increment();
     trivia.playGame.showQuestion(sourceQ)
 //When a player answers a question
@@ -114,13 +108,13 @@ var trivia = {
 // questions for the game--Seattle & DC categories
     questions: {
         Seattle: [
-            "Ready to play? Type 'y' to begin.",
+            "Ready to play? Type 'y' to begin. Remember: Spelling and capitalization count!",
             "What is the name of the large outdoor market in Seattle?",
             "What is the name of the tallest building in Seattle?",
             "What is the name of the large manmade lake in Seattle?",
             "What mountain is located just south of Seattle?",
             "True or false: When the Space Needle was built, it was the tallest building west of the Mississippi.",
-            "True or false: Seattle's annual rainfall is less than that of Houston, Chicago and New York City.",
+            "True or false: Seattle's annual rainfall is less than that of Houston, Chicago and NYC.",
             "What creature lives under the Aurora Bridge?",
             "What major public university is based in Seattle?",
             "True or False: People in Seattle buy the fewest sunglasses per capita than any other U.S. city.",
@@ -133,7 +127,7 @@ var trivia = {
             "Which Fortune 500 company is the largest Seattle-area employer?"
         ],
         DC: [
-            "Ready to play? Type 'y' to begin.",
+            "Ready to play? Type 'y' to begin. Remember: Spelling and capitalization count!",
             "How do D.C. residents refer to the local rail system?",
             "What is most visited site in Washington, D.C.?",
             "True or false: The president lives at 1600 Pennsylvania Avenue, SW.",
@@ -148,7 +142,7 @@ var trivia = {
             "Which of the following is NOT a House office building: Russell, Rayburn or Longworth?",
             "True or false: D.C. residents consume more wine per capita than any other state.",
             "Which Smithsonian museum is the second-most visited museum in the world?",
-            "True or false: When it was completed in 1884, the Washington Monument was the tallest structure in the world."
+            "True or false: When it was completed, the Washington Monument was the world's tallest structure."
         ]
     },
     // answers for the questions
@@ -192,7 +186,7 @@ var trivia = {
             // if the final question was answered, tell the player how many he/she got correct
             var answers = trivia.qCounter.numCorrect - 1;
             if(trivia.num+1 > $(sourceQ).length){
-                $("h4.question").html("You answered "+ answers + " out of 15 questions correctly!");
+                $("h4.question").html("You answered "+ answers + " out of 15 questions correctly! Scroll down to see how your knowledge stacks up!");
                 // stop the timer after the final question is answered
                 trivia.timer.stopTimer();
             }
