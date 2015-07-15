@@ -58,7 +58,7 @@ var trivia = {
     num: 0,
 // controls the game timer
     timer: {
-        seconds: 90,
+        seconds: 300,
         newTime: 0,
         // starts the timer when invoked
         increment: function incrementTime() {
