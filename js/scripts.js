@@ -1,5 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // functions on load
+// this code commenting is next level.. LOVE it
 $(document).ready(function() {
     $('a').smoothScroll();
     $(this).scrollTop(0);
@@ -61,6 +62,13 @@ var answers;
 var firstScore;
 var playerTwo;
 // object that controls everything else
+// i like/dislike the comment you made here. I like that you are trying to tackle the hard object oriented approach
+// But when we start to think about object oriented solutions for code. Really what we want to do
+// is encapsulate certain properties and logics into certain objects. When we drop everything into
+// one gigantic megalo object were really just namespacing the global namespace into Trivia. I think
+// your program could have 2 or 3 types of objects. One object might be the Game object that handles
+// all of the interfaces. Another might be a question object that handles the attributes you have in
+// sourceQ/sourceA. You may even have an object that handles the different DOM manipulations you want your program to do.
 var trivia = {
     num: 0,
 // controls the game timer
@@ -68,6 +76,7 @@ var trivia = {
         seconds: 90,
         newTime: 0,
         // starts the timer when invoked
+        // i think here we just use an anonymous function after increment: i think itll work either way, just unnecessary code
         increment: function incrementTime() {
             interval = setInterval(function(){
                 if(trivia.timer.seconds > 0){
@@ -96,6 +105,7 @@ var trivia = {
 // tracks how many questions are remaining in the game
     qCounter: {
         numCorrect: 0,
+        // might be better to utilize the length of sourceQ instead of hardcoding 16, that way it's more modular
         totalQ: 16,
         numAsked: 0,
         // adds +1 to the correct answers box for every correct question
@@ -117,6 +127,9 @@ var trivia = {
     },
 // questions for the game--Seattle & DC categories
     questions: {
+        // I was thinking, it may be better to encapsulate the questions as an array of objects.
+        // this will do a couple different things. 1. you can set the type: (seattle/washington), questions and answer all in one object
+        // 2. In doing number 1, now the answers and questions aren't so tightly coupled by index, and they are accesible through one object
         Seattle: [
             "Ready to play? Type 'y' to begin. Remember: Spelling counts!",
             "What is the name of the large outdoor market in Seattle?",
@@ -226,6 +239,7 @@ var trivia = {
         },
         // sets up two player game
         twoPlayerMode: function twoPlayerMode(){
+          // two player mode is so cool!
             //store the first score in the browser storage, as well as a "check" value to indicate that this is a two-player game
             var secondPlayer = "yes";
             var playerOne = answers;
